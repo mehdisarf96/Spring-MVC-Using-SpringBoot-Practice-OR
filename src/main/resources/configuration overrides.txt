@@ -1,0 +1,69 @@
+the most common and convenient way to override the default configuration provided by Spring Boot
+is to use the application.properties file.
+
+in file tuye src/main/resources hast.
+
+the application.properties file is an externalized file that can be placed
+on the classpath to specify customized configurations for Spring Boot and
+our Spring MVC project.
+
+this allow us to modify the behavior of our application when we need to
+deviate from the settings that are chosen by Spring Boot by default.
+
+** the application.properties has intellisense.
+** this (application.properties) is just a simple properties file.
+
+masalan ye "spring.mvc." bezan;
+kolle configuration option haye available baraye Spring MVC dar Spring Boot ro miare.
+
+yeki az propery haye besiar por estefade baraye Spring MVC:
+
+--- spring.mvc.servlet.load-on-startup=1 ---
+
+qabeliate moshakhas kardane inke key the DispatcherServlet load beshe
+using load-on-startup property
+
+-- spring.mvc.static-path-pattern= ---
+
+path ya dir ii ast ke dar bar migire static files mesle .css ya .js
+that we dont want the DispatcherServlet to handle request for.
+be sadegi faqat mikhaym serve up konim un mohtavaye static ro.
+
+--- spring.mvc.view.prefix= ---
+--- spring.mvc.view.suffix= ---
+
+va koliiiiii option dg baraye config e Spring MVC.
+
+in property ha ham kheyli useful va mofidan:
+
+* server.port=9090
+
+in mamulan kheyli moheme. age chandta app e darhale ejra dashte bashim,
+ehtemalesh hast ke port conflict pish biad. so age app avalimun masalan
+port esh 8080 e, app dovomim ro portesh ro set mikonam 9090 masalan.
+so be app e mun dastresi khahim dasht ruye port e 9090.
+
+* server.servlet.context-path=/simple
+
+mitunam context path ro set konam.
+This(yani context path) is the path found directly after the domain name in url.
+
+* logging.level.root=debug
+
+mitunam logging level ro set konam. mitunam root logger ro set konam.
+
+==================================================
+
+alan app ro run mikonam va alan dg in url ro mizanam:
+
+http://localhost:9090/simple/main/
+
+va Ok.
+===================================================
+
+
+
+Spring Boot provides configuration following its COC approach.
+sometimes that default configuration does not work for us
+and the application.properties file is an extremely effictive and efficient way
+to override that default configuration.
