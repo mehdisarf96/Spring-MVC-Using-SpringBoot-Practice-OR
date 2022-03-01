@@ -1,0 +1,46 @@
+How to configure Thymeleaf with Spring MVC to display Views.
+
+Configure Spring MVC using Spring Boot so that we can display Thymeleaf templates.
+that way we can have views within our application.
+
+Thymleaf : a java-based Template Engine. (kheyli khub integrate mishe ba Spring MVC)
+
+dar hale hazer, projeye Sprin MVC mun, has not configured any template engine.
+so nemitunim hich View ii ro render konim.
+
+be alave, chandin mas'ale vojud dare dar estefade az traditional jsp ba Spring Boot.
+
+hamin baes mishe ke Thymleaf behtarin entekhab bashe.
+
+baraye inke Thymleaf ro tu appemun config konim,
+bayad spring-boot-starter-thymeleaf ro be pom.xml ezafe konim.
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    <version>2.6.4</version>
+</dependency>
+
+in az in.
+
+kare badi ine ke boro be src/main/resources. yek directory be esme 'templates' khahi did.
+
+by default, template hayii ro ke inja qarar migirand, Spring Boot auto configure mikone.
+
+so tuye directory e 'templates' mirim va yek Thymeleaf template e jadid misazim.
+
+chetor? bayad ye html file besazi. masalan hello.html (tag e <meta> ro hazf kon.)
+tamum! the template sakhte va establish shod.
+
+alan masalan mitunim berim tu controller va bash kar konim:
+
+ @RequestMapping("/")
+    public String greeting() {
+        return "hello"; // specifying the template name
+
+    }
+
+so we give the view name. the dispatcher goes and finds our hello template
+and renders that in response to the request. tihs is all configured by default
+by Spring Boot.
+

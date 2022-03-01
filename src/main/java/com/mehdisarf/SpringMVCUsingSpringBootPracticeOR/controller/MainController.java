@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/main")
 public class MainController {
 
-    @ResponseBody
     @RequestMapping("/")
     public String greeting() {
-        return "Hello World :D";
+        return "hello"; // specifying the template name
     }
 }
