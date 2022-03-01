@@ -14,6 +14,8 @@
     <groupId>com.mehdisarf</groupId>
     <artifactId>Spring-MVC-Using-SpringBoot-Practice-OR</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
     <name>Spring-MVC-Using-SpringBoot-Practice-OR</name>
     <description>Demo project for Spring Boot</description>
 
@@ -27,6 +29,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

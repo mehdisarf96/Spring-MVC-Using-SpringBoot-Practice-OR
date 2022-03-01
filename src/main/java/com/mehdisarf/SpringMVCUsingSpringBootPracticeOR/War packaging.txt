@@ -1,0 +1,113 @@
+chetor Spring Boot ro config konim tori ke betunim package konim yek War file ro bejaye
+the Default executable jar.
+
+yad gereftim ke chejur app e mun ro config konim to be packaged as an executable jar
+so that can be ran within a main method or deploy to a servlet container.
+
+This all starts in the pom.xml file !
+
+we need to modify the <packaging></<packaging> from jar to war:
+
+    <groupId>com.mehdisarf</groupId>
+    <artifactId>Spring-MVC-Using-SpringBoot-Practice-OR</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+and the next thing we need to do is specify one of our dependency as 'provided':
+be in shekl ke ye dependency jadid be in shekl ezafe mikonam:
+
+	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+va in neshun mide ke We do not need to include any of the libraries associated with
+the spring-boot-starter-tomcat dependency because we expect them to be 'provided'!
+this is going to allow our packaged application to run as WAR on standalone tomcat server.
+
+-----------------------------------------------------
+-----------------------------------------------------
+
+ba in taqirati ke dar pom.xml dadim, hala mitunim berim be class ii ke @SpringBootApplication dare.
+
+this is the root class that contains our main method va taqirati ke inja mikham bedam kheyli sade and.
+
+tanha kari ke lazeme tu in class anjam bedam ine ke bayad in class
+extends kone the SpringBootServletInitializer class.
+
+
+@SpringBootApplication
+public class SpringMvcUsingSpringBootPracticeOrApplication
+        extends SpringBootServletInitializer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringMvcUsingSpringBootPracticeOrApplication.class, args);
+    }
+}
+
+
+berim tuye SpringBootServletInitializer bash ashna shim.
+
+mibiniim ke SpringBootServletInitializer implement mikone interface e WebApplicationInitializer ro.
+
+Doc:
+An opinionated WebApplicationInitializer to run a SpringApplication
+from a traditional WAR deployment
+
+and this is the class that has the hooks into the Servlet 3-0 Container
+and we've used it in the past to configure the Dispatcher Servlet.
+
+==========================================
+==========================================
+
+akharin kar ham ine ke age tu eclipce hasti, yek execution enviroment add koni (masalan java 8)
+alan dg mitini app e mun ro run konim va Ok.
+
+Hala dar in lahze, We are going to Package the application as WAR.
+
+Finally, we tell maven to package the project in to WAR.
+In your pom.xml, change the attribute value for packaging from jar to war
+
+<packaging>war</packaging>
+
+Then try to build your project using: 'mvn package'
+
+tu IDE bekhay anjam bedi inkaro injur:
+
+tu eclipce :
+run as a Mavenbuild ---> Goals: package ---> va bad run. (albate in male eclipce e)
+
+tu Intellij:
+
+sarbarg e Maven ---> Project ro entekhab. ---> Lifecycle --->
+ruye 'package' right click va 'Run Maven Build' ro bzan. khalas.
+
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------< com.mehdisarf:Spring-MVC-Using-SpringBoot-Practice-OR >--------
+[INFO] Building Spring-MVC-Using-SpringBoot-Practice-OR 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ Spring-MVC-Using-SpringBoot-Practice-OR ---
+...
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ Spring-MVC-Using-SpringBoot-Practice-OR ---
+...
+[INFO] --- maven-war-plugin:3.3.2:war (default-war) @ Spring-MVC-Using-SpringBoot-Practice-OR ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [Spring-MVC-Using-SpringBoot-Practice-OR] in [F:\OReilly Spring MVC\OReilly Spring MVC Projects\Spring-MVC-Using-SpringBoot-Practice-OR\target\Spring-MVC-Using-SpringBoot-Practice-OR-0.0.1-SNAPSHOT]
+[INFO] Processing war project
+[INFO] Building war: F:\OReilly Spring MVC\OReilly Spring MVC Projects\Spring-MVC-Using-SpringBoot-Practice-OR\target\Spring-MVC-Using-SpringBoot-Practice-OR-0.0.1-SNAPSHOT.war
+[INFO] --- spring-boot-maven-plugin:2.6.4:repackage (repackage) @ Spring-MVC-Using-SpringBoot-Practice-OR ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  04:08 min
+[INFO] Finished at: 2022-03-01T15:24:06+03:30
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0
+
+
+dar nahayat yek War sakhte mishe. khalas. alan mitni in War ro deploy koni
+ruye yek standalone server.
