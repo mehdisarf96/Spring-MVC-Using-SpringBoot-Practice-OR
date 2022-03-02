@@ -2,14 +2,13 @@ package com.mehdisarf.SpringMVCUsingSpringBootPracticeOR.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/home")
-public class MainController {
+@RequestMapping("/project")
+public class ProjectController {
 
-    @RequestMapping("/")
-    public String greeting() {
-        return "home";
+    @RequestMapping("/add")
+    public String addProject(){
+        return "project_add";
     }
 }
