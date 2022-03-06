@@ -28,17 +28,17 @@
             <th>Sponsor</th>
             <th>Description</th>
         </tr>
-
         <c:forEach items="${projects}" var="project">
-
             <tr>
-                <td>${project.name}</td>
+                <td>
+                    <a href="<spring:url value="/project/${project.projectId}"/>">
+                            ${project.name}
+                    </a>
+                </td>
                 <td>${project.sponsor}</td>
                 <td>${project.description}</td>
             </tr>
-
         </c:forEach>
-
         </tbody>
     </table>
 
